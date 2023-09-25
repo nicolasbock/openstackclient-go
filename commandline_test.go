@@ -16,10 +16,20 @@ func TestNewOptions(t *testing.T) {
 }
 
 func TestParseEnvironment(t *testing.T) {
-	expected := "https://1.2.3.4:5000/v3"
-	os.Setenv("OS_AUTH_URL", expected)
+	expectedAuthProtocol := "http"
+	expectedAuthType := "passwordx"
+	expectedAuthURL := "https://1.2.3.4:5000/v3"
+	os.Setenv("OS_AUTH_PROTOCOL", expectedAuthProtocol)
+	os.Setenv("OS_AUTH_TYPE", expectedAuthType)
+	os.Setenv("OS_AUTH_URL", expectedAuthURL)
 	options := parseEnvironment()
-	if options.OS_AUTH_URL != expected {
-		t.Errorf("exptect %s, got %s", expected, options.OS_AUTH_URL)
+	if options.OS_AUTH_TYPE != expectedAuthType {
+		t.Errorf("expected %s, got %s", expectedAuthType, options.OS_AUTH_TYPE)
+	}
+	if options.OS_AUTH_PROTOCOL != expectedAuthProtocol {
+		t.Errorf("expected %s, got %s", expectedAuthProtocol, options.OS_AUTH_PROTOCOL)
+	}
+	if options.OS_AUTH_URL != expectedAuthURL {
+		t.Errorf("expected %s, got %s", expectedAuthURL, options.OS_AUTH_URL)
 	}
 }
