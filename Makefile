@@ -1,0 +1,6 @@
+openstack-go: *.go
+	go build -v ./...
+
+.PHONY: test
+test:
+	go test -v ./...
