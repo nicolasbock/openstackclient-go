@@ -1,0 +1,25 @@
+---
+name: Build and test snap
+on:
+    push:
+        branches:
+            - main
+    pull_request:
+        branches:
+            - main
+
+jobs:
+    build:
+      runs-on: ubuntu-latest
+      steps:
+      - uses: actions/checkout@v4
+      - uses: snapcore/action-build@v1
+        id: snap
+      - run: |
+          sudo snap install --dangerous ${{ steps.snap.outputs.snap }}
+          openstack-go --help
+      - uses: actions/upload-artifact@v3
+        with:
+          name: snap
+          path: ${{ steps.snap.outputs.snap }}
+  

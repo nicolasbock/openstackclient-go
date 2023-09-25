@@ -1,0 +1,21 @@
+name: openstack-go
+base: core20
+version: '0.1'
+summary: An experimental OpenStack client written in Go
+description: |
+  This is my-snap's description. You have a paragraph or two to tell the
+  most important story about your snap. Keep it under 100 words though,
+  we live in tweetspace and your description wants to look good in the snap
+  store.
+
+grade: stable
+confinement: strict
+
+apps:
+  openstack-go:
+    command: bin/openstack-go
+
+parts:
+  openstack-go:
+    plugin: go
+    source: .
