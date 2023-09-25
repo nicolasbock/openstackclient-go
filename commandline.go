@@ -57,9 +57,9 @@ func parseEnvironment() Options {
 
 func parseCommandline() Options {
 	options := parseEnvironment()
-	flag.StringVar(&options.OS_AUTH_PROTOCOL, "os-auth-protocol", "http", "protocol")
-	flag.StringVar(&options.OS_AUTH_TYPE, "os-auth-type", "password", "auth-type")
-	flag.StringVar(&options.OS_AUTH_URL, "os-auth-url", "", "auth-url")
+	flag.StringVar(&options.OS_AUTH_PROTOCOL, "os-auth-protocol", "http", "Protocol for authentication, OS_AUTH_PROTOCOL")
+	flag.StringVar(&options.OS_AUTH_TYPE, "os-auth-type", "password", "Select an authentication type. Available types: password, OS_AUTH_TYPE")
+	flag.StringVar(&options.OS_AUTH_URL, "os-auth-url", "", "Authentication URL, OS_AUTH_URL")
 	flag.Parse()
 	return options
 }
