@@ -1,5 +1,5 @@
-openstack-go: *.go
-	go build -v ./...
+openstack-go: *.go go.mod cmd/*.go lib/*.go
+	go build -v -o $@ main.go
 
 .PHONY: test
 test:
